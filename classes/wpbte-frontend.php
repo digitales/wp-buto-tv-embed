@@ -33,7 +33,7 @@ class WpButoTvEmbedFrontend extends WpButoTvEmbedCore
     * @param array $rawattr The original unmodified attributes.
     * @return string The embed HTML.
     */
-    function wp_embed_handler_butotv( $matches, $attr, $url, $rawattr ) {
+    static function wp_embed_handler_butotv( $matches, $attr, $url, $rawattr ) {
 
         // Initialise the variables
         $video_id = $width = $height = null;
