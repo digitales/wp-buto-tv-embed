@@ -17,7 +17,8 @@ class WpButoTvEmbedFrontend extends WpButoTvEmbedCore
         /**
          * Add the Buto TV embeds
          */
-        wp_embed_register_handler( 'butotv', '#http://play\.buto\.tv/(?<video_id>[A-za-z0-9]+)#i', array( __CLASS__, 'wp_embed_handler_butotv' ) );
+        wp_embed_register_handler( 'butotv', '#(http|https)://play\.buto\.tv/(?<video_id>[A-za-z0-9]+)#i', array( __CLASS__, 'wp_embed_handler_butotv' ) );
+        
     }
 
 
@@ -48,7 +49,7 @@ class WpButoTvEmbedFrontend extends WpButoTvEmbedCore
             list( $width, $height ) = wp_expand_dimensions( 425, 230, $attr['width'], $attr['height'] );
         }
 
-        $iframe = '<iframe id="buto_iframe_' . $video_id . '" src="http://embed.buto.tv/' . $video_id . '" width="' . $width.'" height="' . $height . '" frameborder="0" scrolling="no"></iframe> ';
+        $iframe = '<iframe id="buto_iframe_' . $video_id . '" src="https://embed.buto.tv/' . $video_id . '" width="' . $width.'" height="' . $height . '" frameborder="0" scrolling="no"></iframe> ';
 
     	return apply_filters( 'embed_butotv', $iframe, $matches, $attr, $url, $rawattr );
     }
